@@ -1,9 +1,10 @@
 import { Linkedin, Twitter } from "lucide-react";
+import logo from "@/assets/greenmixes-logo.png";
 
 const Footer = () => {
   const footerLinks = {
     Company: ["About", "Team", "Careers", "Press"],
-    Technology: ["How It Works", "Research", "Patents", "Case Studies"],
+    Technology: ["How It Works", "Research", "Case Studies"],
     Resources: ["Documentation", "Blog", "FAQ", "Contact"],
     Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
   };
@@ -14,16 +15,15 @@ const Footer = () => {
         <div className="grid md:grid-cols-5 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">BC</span>
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <img src={logo} alt="GreenMixes Logo" className="w-10 h-10 object-contain" />
               <span className="font-display font-bold text-lg text-foreground">
-                BioCarbon<span className="text-primary">Cement</span>
+                Green<span className="text-primary">Mixes</span>
               </span>
             </div>
             <p className="text-muted-foreground text-sm mb-6 max-w-xs">
-              Building a carbon-negative future through innovative biochar cement technology.
+              Building a carbon-negative future through innovative biochar cement technology. 
+              Drop-in solution for the construction industry.
             </p>
             <div className="flex gap-3">
               <a
@@ -64,7 +64,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2024 BioCarbon Cement. All rights reserved.
+            © 2025 GreenMixes Ltd. All rights reserved. Cambridge, UK.
           </p>
           <div className="flex gap-6">
             {footerLinks.Legal.map((link) => (
