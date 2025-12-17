@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/greenmixes-logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,12 +18,10 @@ const Navbar = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">BC</span>
-            </div>
+          <a href="#" className="flex items-center gap-3">
+            <img src={logo} alt="GreenMixes Logo" className="w-10 h-10 object-contain" />
             <span className="font-display font-bold text-lg text-foreground">
-              BioCarbon<span className="text-primary">Cement</span>
+              Green<span className="text-primary">Mixes</span>
             </span>
           </a>
 

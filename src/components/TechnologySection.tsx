@@ -4,41 +4,41 @@ const TechnologySection = () => {
   const steps = [
     {
       icon: Recycle,
-      title: "Biomass Collection",
-      description: "Agricultural residues and organic waste are collected from local farms and industries.",
+      title: "Biochar Sourcing",
+      description: "Unprocessed biochar is sourced from sustainable biomass conversion processes.",
     },
     {
       icon: Zap,
-      title: "Pyrolysis Process",
-      description: "High-temperature treatment converts biomass into stable biochar, locking carbon for centuries.",
+      title: "GreenMixes Formulation",
+      description: "Our proprietary binders and process transform biochar into a high-performance admixture.",
     },
     {
       icon: Shield,
-      title: "Cement Integration",
-      description: "Biochar is precisely engineered into cement mixtures, enhancing strength and durability.",
+      title: "Concrete Integration",
+      description: "GreenMixes admixture is mixed with cement, enabling partial cement replacement.",
     },
     {
       icon: Leaf,
       title: "Carbon-Negative Output",
-      description: "The final product stores more carbon than emitted during production—true negative emissions.",
+      description: "The final carbon-negative concrete product sequesters CO₂ permanently in buildings.",
     },
   ];
 
   const features = [
     {
-      stat: "800°C",
-      label: "Pyrolysis Temperature",
-      description: "Optimal temperature for maximum carbon stability",
+      stat: "2-3x",
+      label: "Enhanced Loading",
+      description: "Higher biochar loading than current solutions (vs 1-2%)",
     },
     {
-      stat: "1000+",
-      label: "Years Stability",
-      description: "Carbon locked away for over a millennium",
+      stat: ">15%",
+      label: "Cement Replacement",
+      description: "High cement replacement rate vs industry standard 5%",
     },
     {
-      stat: "30%",
-      label: "Strength Increase",
-      description: "Enhanced mechanical properties vs traditional cement",
+      stat: "100%",
+      label: "Comparable Strength",
+      description: "Matches traditional concrete strength and durability",
     },
   ];
 
@@ -52,11 +52,11 @@ const TechnologySection = () => {
         <div className="max-w-3xl mx-auto text-center mb-16">
           <span className="text-primary font-medium text-sm uppercase tracking-wider">Our Technology</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            The Science of Carbon-Negative Cement
+            Drop-In Carbon-Sink Additive
           </h2>
           <p className="text-muted-foreground text-lg">
-            Our proprietary process transforms agricultural waste into high-performance construction 
-            materials while permanently sequestering atmospheric carbon.
+            We enable biochar to bind with cement better than anyone else. Our proprietary 
+            binders and process create a cost-competitive, scalable solution with no capex required.
           </p>
         </div>
 
@@ -106,6 +106,22 @@ const TechnologySection = () => {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Key Benefits */}
+        <div className="mt-16 grid md:grid-cols-3 gap-6">
+          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 text-center">
+            <div className="text-primary font-bold text-lg mb-2">✓ Minimal Workflow Disruptions</div>
+            <p className="text-muted-foreground text-sm">Drop-in solution requires no capex or infrastructure changes</p>
+          </div>
+          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 text-center">
+            <div className="text-primary font-bold text-lg mb-2">✓ Carbon Reduction + Sequestering</div>
+            <p className="text-muted-foreground text-sm">Combines reduced emissions with permanent carbon storage</p>
+          </div>
+          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 text-center">
+            <div className="text-primary font-bold text-lg mb-2">✓ Low Regulation Barrier</div>
+            <p className="text-muted-foreground text-sm">Easy adoption pathway compared to alternative technologies</p>
           </div>
         </div>
       </div>

@@ -1,26 +1,40 @@
 import { Building2, Users, Award, Globe } from "lucide-react";
+import logo from "@/assets/greenmixes-logo.png";
 
 const AboutSection = () => {
   const highlights = [
     {
       icon: Building2,
-      title: "Founded in 2021",
-      description: "Born from MIT research on sustainable materials",
+      title: "Cambridge Research",
+      description: "PhD research from University of Cambridge",
     },
     {
       icon: Users,
-      title: "60+ Team Members",
-      description: "Scientists, engineers, and sustainability experts",
+      title: "Expert Team",
+      description: "PhDs in Chemical Engineering & Chemistry",
     },
     {
       icon: Award,
-      title: "Patent Portfolio",
-      description: "12 patents protecting our proprietary technology",
+      title: "Proprietary Technology",
+      description: "Unique binders & process for biochar-cement binding",
     },
     {
       icon: Globe,
-      title: "Global Reach",
-      description: "Operations across 3 continents",
+      title: "Kilogram Scale",
+      description: "Already producing admixture at production scale",
+    },
+  ];
+
+  const team = [
+    {
+      name: "Dr. Dushanth Seevaratnam",
+      role: "Co-Founder",
+      credentials: "PhD in Chemical Engineering (UoC), BSI Member in Circular Economy",
+    },
+    {
+      name: "Callon Peate",
+      role: "Co-Founder",
+      credentials: "MSci in Chemistry (Imperial), Co-founder of Safe Air For Everyone",
     },
   ];
 
@@ -30,20 +44,18 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>
-            <span className="text-primary font-medium text-sm uppercase tracking-wider">About Us</span>
+            <span className="text-primary font-medium text-sm uppercase tracking-wider">About GreenMixes</span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-              Pioneering the Future of Construction
+              A Material Science Approach to Construction
             </h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              BioCarbon Cement was founded by a team of materials scientists and climate 
-              entrepreneurs with a shared vision: to transform the construction industry 
-              from a major carbon emitter into a carbon sink.
+              GreenMixes was founded by a team of materials scientists from the University of Cambridge 
+              with deep expertise in sustainable formulations, nanotechnology, and circular economy.
             </p>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Our breakthrough came from understanding that biochar—a stable form of carbon 
-              produced from organic waste—could not only enhance cement performance but also 
-              permanently sequester CO₂. Today, we're scaling this technology to meet the 
-              demands of a decarbonizing world.
+              Our breakthrough came from understanding that biochar—when properly treated with our 
+              proprietary binders—could not only replace significant amounts of cement but also 
+              achieve carbon-negative concrete while maintaining structural integrity.
             </p>
 
             {/* Highlights Grid */}
@@ -86,12 +98,10 @@ const AboutSection = () => {
                 </svg>
               </div>
               
-              {/* Central element */}
+              {/* Central element - Logo */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-48 h-48 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-float flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent shadow-glow" />
-                  </div>
+                  <img src={logo} alt="GreenMixes Logo" className="w-32 h-32 object-contain" />
                 </div>
               </div>
 
@@ -109,18 +119,35 @@ const AboutSection = () => {
               ))}
             </div>
 
-            {/* Decorative badge */}
+            {/* Team badge */}
             <div className="absolute -bottom-4 -right-4 bg-card border border-border rounded-xl p-4 shadow-lg">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-2xl">🌱</span>
+                  <span className="text-2xl">🎓</span>
                 </div>
                 <div>
-                  <div className="font-display font-bold text-foreground">B Corp Certified</div>
-                  <div className="text-muted-foreground text-sm">Since 2023</div>
+                  <div className="font-display font-bold text-foreground">Cambridge Founded</div>
+                  <div className="text-muted-foreground text-sm">UK Research Excellence</div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Team Section */}
+        <div className="mt-20 pt-16 border-t border-border">
+          <h3 className="font-display text-2xl font-bold text-foreground text-center mb-12">Founding Team</h3>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {team.map((member) => (
+              <div key={member.name} className="bg-muted/20 border border-border rounded-xl p-6 text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-primary" />
+                </div>
+                <div className="font-display font-semibold text-foreground text-lg">{member.name}</div>
+                <div className="text-primary text-sm font-medium mb-2">{member.role}</div>
+                <p className="text-muted-foreground text-sm">{member.credentials}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

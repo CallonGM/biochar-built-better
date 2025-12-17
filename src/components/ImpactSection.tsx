@@ -23,28 +23,28 @@ const ImpactSection = () => {
 
   const impacts = [
     {
-      value: 12500,
-      suffix: "+",
-      label: "Tons CO₂ Sequestered",
-      description: "Permanently stored in our biochar cement products",
-    },
-    {
-      value: 85,
+      value: 8,
       suffix: "%",
-      label: "Waste Diverted",
-      description: "Agricultural residues repurposed from landfills",
+      label: "Global CO₂ Emissions",
+      description: "Cement industry's contribution to global carbon emissions",
     },
     {
-      value: 200,
-      suffix: "+",
-      label: "Partner Farms",
-      description: "Local agricultural partnerships worldwide",
+      value: 12,
+      suffix: "%",
+      label: "Industry Growth by 2050",
+      description: "Expected cement demand increase, requiring urgent decarbonisation",
     },
     {
-      value: 50,
-      suffix: "M",
-      label: "Investment Raised",
-      description: "Backed by leading climate-tech investors",
+      value: 5,
+      suffix: "B",
+      label: "Market Size (Pavers)",
+      description: "Beachhead market for concrete pavers globally",
+    },
+    {
+      value: 800,
+      suffix: "B+",
+      label: "Ready-Mix Market",
+      description: "Total addressable market for ready-mix concrete",
     },
   ];
 
@@ -57,13 +57,13 @@ const ImpactSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-primary font-medium text-sm uppercase tracking-wider">Our Impact</span>
+          <span className="text-primary font-medium text-sm uppercase tracking-wider">The Problem</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            Measurable Climate Action
+            Cement Needs Urgent Decarbonisation
           </h2>
           <p className="text-muted-foreground text-lg">
-            Every project built with our biochar cement contributes to a healthier planet. 
-            Track our real-time environmental impact.
+            Cement is the 2nd most used material on Earth after water. The industry faces 
+            compliance costs of $5-10 billion annually with net-zero commitments by 2050.
           </p>
         </div>
 
@@ -94,18 +94,34 @@ const ImpactSection = () => {
           ))}
         </div>
 
+        {/* Industry Partners */}
+        <div className="mt-20 max-w-4xl mx-auto">
+          <p className="text-center text-muted-foreground mb-8">
+            Key stakeholders who have pledged 2030-2045 net-zero compliance:
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-6 text-muted-foreground/60 text-sm font-medium">
+            <span className="bg-muted/30 px-4 py-2 rounded-lg">SKANSKA</span>
+            <span className="bg-muted/30 px-4 py-2 rounded-lg">CEMEX</span>
+            <span className="bg-muted/30 px-4 py-2 rounded-lg">HOLCIM</span>
+            <span className="bg-muted/30 px-4 py-2 rounded-lg">Heidelberg Materials</span>
+            <span className="bg-muted/30 px-4 py-2 rounded-lg">LAING O'ROURKE</span>
+            <span className="bg-muted/30 px-4 py-2 rounded-lg">WILLMOTT DIXON</span>
+            <span className="bg-muted/30 px-4 py-2 rounded-lg">MOTT MACDONALD</span>
+          </div>
+        </div>
+
         {/* Mission Statement */}
         <div className="mt-20 max-w-4xl mx-auto">
           <blockquote className="text-center">
             <p className="font-display text-2xl md:text-3xl text-foreground leading-relaxed mb-6">
-              "Our mission is to decarbonize the construction industry—one of the largest 
-              contributors to global emissions—by making carbon-negative materials the standard, 
-              not the exception."
+              "Our mission is to decarbonize the construction industry by making 
+              carbon-negative materials the standard, not the exception—with zero 
+              workflow disruptions."
             </p>
             <footer className="text-muted-foreground">
-              <cite className="not-italic font-medium text-foreground">Dr. Sarah Chen</cite>
+              <cite className="not-italic font-medium text-foreground">GreenMixes Team</cite>
               <span className="mx-2">·</span>
-              <span>CEO & Co-Founder</span>
+              <span>Cambridge, UK</span>
             </footer>
           </blockquote>
         </div>

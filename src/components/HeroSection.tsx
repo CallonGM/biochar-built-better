@@ -16,7 +16,7 @@ const HeroSection = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-muted/50 border border-border rounded-full px-4 py-2 mb-8 animate-fade-in">
             <Leaf className="w-4 h-4 text-accent" />
-            <span className="text-sm text-muted-foreground">Carbon-Negative Construction</span>
+            <span className="text-sm text-muted-foreground">Drop-in Carbon-Sink Additive</span>
           </div>
 
           {/* Headline */}
@@ -24,8 +24,9 @@ const HeroSection = () => {
             className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[0.95] mb-6 animate-fade-in"
             style={{ animationDelay: "0.1s" }}
           >
-            Building Tomorrow with{" "}
-            <span className="text-gradient">Biochar Cement</span>
+            Building a{" "}
+            <span className="text-gradient">Carbon-Negative</span>{" "}
+            Future
           </h1>
 
           {/* Subheadline */}
@@ -33,8 +34,8 @@ const HeroSection = () => {
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in"
             style={{ animationDelay: "0.2s" }}
           >
-            Revolutionary deeptech that transforms agricultural waste into carbon-sequestering 
-            construction materials. Every ton of our cement removes CO₂ from the atmosphere.
+            GreenMixes enables biochar to bind with cement better than anyone else. 
+            Less cement usage means less CO₂ emissions. Concrete compatible biochar means more carbon sequestered.
           </p>
 
           {/* CTAs */}
@@ -57,16 +58,16 @@ const HeroSection = () => {
             style={{ animationDelay: "0.4s" }}
           >
             <div>
-              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">40%</div>
-              <div className="text-sm text-muted-foreground mt-1">Less CO₂ Emissions</div>
+              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">2-3x</div>
+              <div className="text-sm text-muted-foreground mt-1">Enhanced Concrete Loading</div>
             </div>
             <div>
-              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">500kg</div>
-              <div className="text-sm text-muted-foreground mt-1">Carbon Stored/Ton</div>
+              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">&gt;15%</div>
+              <div className="text-sm text-muted-foreground mt-1">Cement Replacement</div>
             </div>
             <div>
-              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">2x</div>
-              <div className="text-sm text-muted-foreground mt-1">Durability Increase</div>
+              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">8%</div>
+              <div className="text-sm text-muted-foreground mt-1">Global CO₂ from Cement</div>
             </div>
           </div>
         </div>
