@@ -57,17 +57,17 @@ const AboutSection = () => {
               {/* Team */}
               <div className="space-y-4">
                 <div className="flex items-center gap-4 bg-muted/20 rounded-lg p-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-xl">🔬</div>
+                  <div>
+                    <div className="font-display font-semibold text-foreground">Callon Peate</div>
+                    <div className="text-muted-foreground text-sm">PhD Student, Cambridge</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 bg-muted/20 rounded-lg p-4">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-xl">🎓</div>
                   <div>
                     <div className="font-display font-semibold text-foreground">Dr. Dushanth Seevaratnam</div>
                     <div className="text-muted-foreground text-sm">PhD Chemical Engineering, Cambridge</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 bg-muted/20 rounded-lg p-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-xl">🔬</div>
-                  <div>
-                    <div className="font-display font-semibold text-foreground">Callon Peate</div>
-                    <div className="text-muted-foreground text-sm">MSci Chemistry, Imperial College</div>
                   </div>
                 </div>
               </div>
