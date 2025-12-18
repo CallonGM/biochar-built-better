@@ -7,157 +7,71 @@ const ImpactSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.3 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const impacts = [
-    {
-      value: 8,
-      suffix: "%",
-      label: "Global CO₂ Emissions",
-      description: "Cement industry's contribution to global carbon emissions",
-    },
-    {
-      value: 12,
-      suffix: "%",
-      label: "Industry Growth by 2050",
-      description: "Expected cement demand increase, requiring urgent decarbonisation",
-    },
-    {
-      value: 5,
-      suffix: "B",
-      label: "Market Size (Pavers)",
-      description: "Beachhead market for concrete pavers globally",
-    },
-    {
-      value: 800,
-      suffix: "B+",
-      label: "Ready-Mix Market",
-      description: "Total addressable market for ready-mix concrete",
-    },
-  ];
-
   return (
     <section id="impact" ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
-      {/* Decorative elements */}
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/5 rounded-full blur-[100px] -translate-y-1/2" />
-      <div className="absolute top-1/2 right-0 w-72 h-72 bg-accent/5 rounded-full blur-[100px] -translate-y-1/2" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-primary font-medium text-sm uppercase tracking-wider">The Problem</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            Cement Needs Urgent Decarbonisation
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Cement is the 2nd most used material on Earth after water. The industry faces 
-            compliance costs of $5-10 billion annually with net-zero commitments by 2050.
-          </p>
-        </div>
-
-        {/* Impact Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {impacts.map((impact, index) => (
-            <div
-              key={impact.label}
-              className={`bg-card-gradient border border-border rounded-2xl p-8 text-center transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className="font-display text-5xl md:text-6xl font-bold text-gradient mb-2">
-                {isVisible ? (
-                  <CountUp end={impact.value} suffix={impact.suffix} />
-                ) : (
-                  `0${impact.suffix}`
-                )}
-              </div>
-              <div className="font-display font-semibold text-foreground text-lg mb-2">
-                {impact.label}
-              </div>
-              <p className="text-muted-foreground text-sm">
-                {impact.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Industry Partners */}
-        <div className="mt-20 max-w-4xl mx-auto">
-          <p className="text-center text-muted-foreground mb-8">
-            Key stakeholders who have pledged 2030-2045 net-zero compliance:
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-6 text-muted-foreground/60 text-sm font-medium">
-            <span className="bg-muted/30 px-4 py-2 rounded-lg">SKANSKA</span>
-            <span className="bg-muted/30 px-4 py-2 rounded-lg">CEMEX</span>
-            <span className="bg-muted/30 px-4 py-2 rounded-lg">HOLCIM</span>
-            <span className="bg-muted/30 px-4 py-2 rounded-lg">Heidelberg Materials</span>
-            <span className="bg-muted/30 px-4 py-2 rounded-lg">LAING O'ROURKE</span>
-            <span className="bg-muted/30 px-4 py-2 rounded-lg">WILLMOTT DIXON</span>
-            <span className="bg-muted/30 px-4 py-2 rounded-lg">MOTT MACDONALD</span>
-          </div>
-        </div>
-
-        {/* Mission Statement */}
-        <div className="mt-20 max-w-4xl mx-auto">
-          <blockquote className="text-center">
-            <p className="font-display text-2xl md:text-3xl text-foreground leading-relaxed mb-6">
-              "Our mission is to decarbonize the construction industry by making 
-              carbon-negative materials the standard, not the exception—with zero 
-              workflow disruptions."
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Big statement */}
+          <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <p className="text-primary font-medium text-sm uppercase tracking-wider mb-4">The Problem</p>
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
+              Cement = <span className="text-gradient">8%</span> of Global CO₂
+            </h2>
+            <p className="text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
+              The 2nd most used material after water. Industry faces $5-10B compliance costs annually. Net-zero by 2050 isn't optional.
             </p>
-            <footer className="text-muted-foreground">
-              <cite className="not-italic font-medium text-foreground">GreenMixes Team</cite>
-              <span className="mx-2">·</span>
-              <span>Cambridge, UK</span>
-            </footer>
-          </blockquote>
+          </div>
+
+          {/* Visual comparison */}
+          <div className={`bg-card-gradient border border-border rounded-2xl p-8 md:p-12 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="text-left">
+                <div className="text-muted-foreground text-sm uppercase tracking-wider mb-2">Current Solutions</div>
+                <div className="space-y-3">
+                  {["1-2% biochar loading", "~5% cement replacement", "High capex required", "Workflow disruptions"].map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-muted-foreground">
+                      <div className="w-2 h-2 rounded-full bg-destructive/50" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="text-left">
+                <div className="text-primary text-sm uppercase tracking-wider mb-2">GreenMixes</div>
+                <div className="space-y-3">
+                  {["2-3x biochar loading", ">15% cement replacement", "Zero capex", "Drop-in solution"].map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-foreground font-medium">
+                      <div className="w-2 h-2 rounded-full bg-primary" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Partners */}
+          <div className={`mt-12 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+            <p className="text-muted-foreground text-sm mb-4">Industry leaders committed to net-zero:</p>
+            <div className="flex flex-wrap justify-center gap-4 text-muted-foreground/50 text-xs font-medium">
+              {["CEMEX", "HOLCIM", "Heidelberg", "SKANSKA", "LAING O'ROURKE"].map((name) => (
+                <span key={name} className="bg-muted/20 px-3 py-1.5 rounded-md">{name}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  );
-};
-
-// Animated counter component
-const CountUp = ({ end, suffix }: { end: number; suffix: string }) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let startTime: number;
-    const duration = 2000;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      
-      // Easing function
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      setCount(Math.floor(easeOutQuart * end));
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }, [end]);
-
-  return (
-    <>
-      {count.toLocaleString()}{suffix}
-    </>
   );
 };
 
