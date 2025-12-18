@@ -1,74 +1,79 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Leaf } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
     <section className="relative min-h-screen bg-hero flex items-center justify-center overflow-hidden grain">
-      {/* Background grid pattern */}
+      {/* Animated grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
-      {/* Glowing orb */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse-slow" />
-      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-accent/10 rounded-full blur-[100px] animate-pulse-slow" />
+      {/* Interactive glowing orbs */}
+      <div 
+        className="absolute w-[500px] h-[500px] bg-primary/20 rounded-full blur-[150px] transition-transform duration-1000"
+        style={{ transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }}
+      />
+      <div 
+        className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[120px] transition-transform duration-1000"
+        style={{ transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)` }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-muted/50 border border-border rounded-full px-4 py-2 mb-8 animate-fade-in">
-            <Leaf className="w-4 h-4 text-accent" />
-            <span className="text-sm text-muted-foreground">Drop-in Carbon-Sink Additive</span>
-          </div>
-
-          {/* Headline */}
-          <h1 
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[0.95] mb-6 animate-fade-in"
-            style={{ animationDelay: "0.1s" }}
-          >
-            Building a{" "}
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Animated headline */}
+          <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-foreground leading-[0.95] mb-6 animate-fade-in">
             <span className="text-gradient">Carbon-Negative</span>{" "}
-            Future
+            <br className="hidden md:block" />
+            Concrete, Today.
           </h1>
 
-          {/* Subheadline */}
+          {/* Single punchy line */}
           <p 
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in"
-            style={{ animationDelay: "0.2s" }}
+            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in"
+            style={{ animationDelay: "0.15s" }}
           >
-            GreenMixes enables biochar to bind with cement better than anyone else. 
-            Less cement usage means less CO₂ emissions. Concrete compatible biochar means more carbon sequestered.
+            We make biochar work in cement. 2-3x better loading. 15%+ cement replacement. Zero workflow changes.
           </p>
 
-          {/* CTAs */}
+          {/* CTA */}
           <div 
             className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in"
-            style={{ animationDelay: "0.3s" }}
+            style={{ animationDelay: "0.25s" }}
           >
             <Button variant="hero" size="xl">
-              Explore Our Technology
+              Partner With Us
               <ArrowRight className="w-5 h-5" />
-            </Button>
-            <Button variant="heroOutline" size="xl">
-              View Impact Report
             </Button>
           </div>
 
-          {/* Stats preview */}
+          {/* Minimal stats */}
           <div 
-            className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-border animate-fade-in"
-            style={{ animationDelay: "0.4s" }}
+            className="flex items-center justify-center gap-12 mt-20 animate-fade-in"
+            style={{ animationDelay: "0.35s" }}
           >
-            <div>
-              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">2-3x</div>
-              <div className="text-sm text-muted-foreground mt-1">Enhanced Concrete Loading</div>
-            </div>
-            <div>
-              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">&gt;15%</div>
-              <div className="text-sm text-muted-foreground mt-1">Cement Replacement</div>
-            </div>
-            <div>
-              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">8%</div>
-              <div className="text-sm text-muted-foreground mt-1">Global CO₂ from Cement</div>
-            </div>
+            {[
+              { value: "8%", label: "of global CO₂ is cement" },
+              { value: "$5B", label: "beachhead market" },
+              { value: "2050", label: "net-zero deadline" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat.value}</div>
+                <div className="text-xs md:text-sm text-muted-foreground mt-1 max-w-[120px]">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
