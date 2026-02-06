@@ -1,89 +1,182 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const HeroSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section className="relative min-h-screen bg-hero flex items-center justify-center overflow-hidden grain">
+    <section
+      ref={containerRef}
+      className="relative min-h-screen bg-hero flex items-center justify-center overflow-hidden grain"
+    >
       {/* Animated grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      
-      {/* Interactive glowing orbs */}
-      <div 
-        className="absolute w-[500px] h-[500px] bg-primary/20 rounded-full blur-[150px] transition-transform duration-1000"
-        style={{ transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }}
+
+      {/* Floating orbs with motion */}
+      <motion.div
+        className="absolute w-[600px] h-[600px] bg-primary/30 rounded-full blur-[180px]"
+        animate={{
+          x: [0, 50, -30, 0],
+          y: [0, -40, 20, 0],
+          scale: [1, 1.1, 0.95, 1],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{ left: "20%", top: "30%" }}
       />
-      <div 
-        className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[120px] transition-transform duration-1000"
-        style={{ transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)` }}
+      <motion.div
+        className="absolute w-[500px] h-[500px] bg-accent/20 rounded-full blur-[150px]"
+        animate={{
+          x: [0, -40, 30, 0],
+          y: [0, 30, -50, 0],
+          scale: [1, 0.9, 1.15, 1],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{ right: "15%", bottom: "20%" }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <motion.div
+        className="container mx-auto px-6 relative z-10"
+        style={{ y, opacity }}
+      >
         <div className="max-w-5xl mx-auto text-center">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-8"
+          >
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-primary text-sm font-medium">
+              DeepTech Climate Innovation
+            </span>
+          </motion.div>
+
           {/* Animated headline */}
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-foreground leading-[0.95] mb-6 animate-fade-in">
-            <span className="text-gradient">Carbon-Negative</span>{" "}
+          <motion.h1
+            className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-foreground leading-[0.95] mb-6"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <motion.span
+              className="text-gradient inline-block"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Carbon-Negative
+            </motion.span>{" "}
             <br className="hidden md:block" />
-            Concrete, Today.
-          </h1>
+            <motion.span
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Concrete, Today.
+            </motion.span>
+          </motion.h1>
 
           {/* Single punchy line */}
-          <p 
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in"
-            style={{ animationDelay: "0.15s" }}
+          <motion.p
+            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            We make biochar work in cement. 2-3x better loading. 15%+ cement replacement. Zero workflow changes.
-          </p>
+            We make biochar work in cement. 2-3x better loading. 15%+ cement
+            replacement. Zero workflow changes.
+          </motion.p>
 
           {/* CTA */}
-          <div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in"
-            style={{ animationDelay: "0.25s" }}
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Button variant="hero" size="xl">
-              Partner With Us
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+              <Button variant="hero" size="xl" className="group">
+                Partner With Us
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </motion.div>
+          </motion.div>
 
           {/* Minimal stats */}
-          <div 
-            className="flex items-center justify-center gap-12 mt-20 animate-fade-in"
-            style={{ animationDelay: "0.35s" }}
+          <motion.div
+            className="flex items-center justify-center gap-8 md:gap-12 mt-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.85 }}
           >
             {[
               { value: "8%", label: "of global CO₂ is cement" },
               { value: "$5B", label: "beachhead market" },
               { value: "2050", label: "net-zero deadline" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat.value}</div>
-                <div className="text-xs md:text-sm text-muted-foreground mt-1 max-w-[120px]">{stat.label}</div>
-              </div>
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <motion.div
+                  className="font-display text-3xl md:text-4xl font-bold text-foreground"
+                  initial={{ scale: 0.5 }}
+                  animate={{ scale: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 200,
+                    delay: 1 + index * 0.1,
+                  }}
+                >
+                  {stat.value}
+                </motion.div>
+                <div className="text-xs md:text-sm text-muted-foreground mt-1 max-w-[120px]">
+                  {stat.label}
+                </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-2 bg-muted-foreground/50 rounded-full" />
-        </div>
-      </div>
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.5 }}
+      >
+        <motion.div
+          className="flex flex-col items-center gap-2 text-muted-foreground"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <span className="text-xs uppercase tracking-widest">Scroll</span>
+          <ChevronDown className="w-5 h-5" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
