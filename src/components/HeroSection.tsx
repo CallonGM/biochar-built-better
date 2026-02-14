@@ -16,46 +16,37 @@ const HeroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen bg-hero flex items-center justify-center overflow-hidden grain"
+      className="relative min-h-screen bg-hero flex items-end overflow-hidden grain"
     >
       {/* Animated grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
 
-      {/* Floating orbs with motion */}
+      {/* Large ambient orb */}
       <motion.div
-        className="absolute w-[600px] h-[600px] bg-primary/30 rounded-full blur-[180px]"
+        className="absolute w-[800px] h-[800px] bg-primary/20 rounded-full blur-[200px]"
         animate={{
-          x: [0, 50, -30, 0],
-          y: [0, -40, 20, 0],
-          scale: [1, 1.1, 0.95, 1],
+          x: [0, 60, -40, 0],
+          y: [0, -50, 30, 0],
+          scale: [1, 1.15, 0.9, 1],
         }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{ left: "20%", top: "30%" }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        style={{ right: "-10%", top: "10%" }}
       />
       <motion.div
-        className="absolute w-[500px] h-[500px] bg-accent/20 rounded-full blur-[150px]"
+        className="absolute w-[400px] h-[400px] bg-accent/10 rounded-full blur-[150px]"
         animate={{
-          x: [0, -40, 30, 0],
-          y: [0, 30, -50, 0],
-          scale: [1, 0.9, 1.15, 1],
+          x: [0, -30, 40, 0],
+          y: [0, 40, -30, 0],
         }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{ right: "15%", bottom: "20%" }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        style={{ left: "5%", bottom: "20%" }}
       />
 
       <motion.div
-        className="container mx-auto px-6 relative z-10"
+        className="container mx-auto px-6 relative z-10 pb-24 pt-32"
         style={{ y, opacity }}
       >
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-6xl">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -65,52 +56,61 @@ const HeroSection = () => {
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-primary text-sm font-medium">
-              DeepTech Climate Innovation
+              Carbon Removal Through Construction
             </span>
           </motion.div>
 
-          {/* Animated headline */}
+          {/* Headline - left aligned, massive, inspired by Solid Carbon */}
           <motion.h1
-            className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-foreground leading-[0.95] mb-6"
-            initial={{ opacity: 0, y: 40 }}
+            className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-[6.5rem] font-bold text-foreground leading-[0.9] mb-8 tracking-tight"
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.span
-              className="text-gradient inline-block"
-              initial={{ opacity: 0, x: -30 }}
+              className="block"
+              initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Carbon-Negative
-            </motion.span>{" "}
-            <br className="hidden md:block" />
+              TURNING
+            </motion.span>
             <motion.span
-              initial={{ opacity: 0, x: 30 }}
+              className="block"
+              initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: 0.35 }}
             >
-              Concrete, Today.
+              BUILDINGS INTO
+            </motion.span>
+            <motion.span
+              className="text-gradient block"
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              CARBON SINKS.
             </motion.span>
           </motion.h1>
 
-          {/* Single punchy line */}
+          {/* Subtext */}
           <motion.p
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, delay: 0.6 }}
           >
-            We make biochar work in cement. 2-3x better loading. 15%+ cement
-            replacement. Zero workflow changes.
+            CO₂-negative concrete admixtures that enable{" "}
+            <span className="text-foreground font-medium">&gt;15% cement replacement</span>
+            —integrated into existing workflows with zero capex.
           </motion.p>
 
-          {/* CTA */}
+          {/* CTAs */}
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-start gap-4 mb-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, delay: 0.7 }}
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
               <Button variant="hero" size="xl" className="group">
@@ -118,41 +118,42 @@ const HeroSection = () => {
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+              <Button variant="heroOutline" size="xl">
+                Learn More
+              </Button>
+            </motion.div>
           </motion.div>
 
-          {/* Minimal stats */}
+          {/* Stats bar - inspired by both sites */}
           <motion.div
-            className="flex items-center justify-center gap-8 md:gap-12 mt-20"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 border-t border-border/50 pt-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.85 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
             {[
-              { value: "8%", label: "of global CO₂ is cement" },
-              { value: "$5B", label: "beachhead market" },
-              { value: "2050", label: "net-zero deadline" },
+              { value: "8%", label: "of global CO₂ is from cement" },
+              { value: ">15%", label: "cement replacement enabled" },
+              { value: "2-3×", label: "higher biochar loading" },
+              { value: "0", label: "workflow changes needed" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="text-center"
+                className="text-left"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
               >
                 <motion.div
-                  className="font-display text-3xl md:text-4xl font-bold text-foreground"
+                  className="font-display text-3xl md:text-4xl font-bold text-foreground mb-1"
                   initial={{ scale: 0.5 }}
                   animate={{ scale: 1 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 200,
-                    delay: 1 + index * 0.1,
-                  }}
+                  transition={{ type: "spring", stiffness: 200, delay: 1.1 + index * 0.1 }}
                 >
                   {stat.value}
                 </motion.div>
-                <div className="text-xs md:text-sm text-muted-foreground mt-1 max-w-[120px]">
+                <div className="text-xs md:text-sm text-muted-foreground leading-tight">
                   {stat.label}
                 </div>
               </motion.div>
@@ -173,7 +174,6 @@ const HeroSection = () => {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="text-xs uppercase tracking-widest">Scroll</span>
           <ChevronDown className="w-5 h-5" />
         </motion.div>
       </motion.div>
