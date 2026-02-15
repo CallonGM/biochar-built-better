@@ -47,19 +47,6 @@ const HeroSection = () => {
         style={{ y, opacity }}
       >
         <div className="max-w-6xl">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-primary text-sm font-medium">
-              Carbon-negative concrete, at scale.
-            </span>
-          </motion.div>
-
           {/* Headline - left aligned, massive, inspired by Solid Carbon */}
           <motion.h1
             className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-[6.5rem] font-bold text-foreground leading-[0.9] mb-8 tracking-tight"
@@ -121,9 +108,11 @@ const HeroSection = () => {
               </a>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <Button variant="heroOutline" size="xl">
-                Learn More
-              </Button>
+              <a href="#technology">
+                <Button variant="heroOutline" size="xl">
+                  Learn More
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
 
