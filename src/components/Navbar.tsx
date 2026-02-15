@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/assets/greenmixes-logo.png";
+import wordmark from "@/assets/greenmixes-wordmark.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,16 +44,13 @@ const Navbar = () => {
             whileTap={{ scale: 0.98 }}
           >
             <motion.img
-              src={logo}
-              alt="GreenMixes Logo"
-              className="w-10 h-10 object-contain"
-              initial={{ rotate: -10, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
+              src={wordmark}
+              alt="GreenMixes"
+              className="h-8 object-contain"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             />
-            <span className="font-display font-bold text-lg text-foreground">
-              Green<span className="text-primary">Mixes</span>
-            </span>
           </motion.a>
 
           {/* Desktop Navigation */}
