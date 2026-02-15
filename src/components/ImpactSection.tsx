@@ -23,22 +23,22 @@ const ImpactSection = () => {
     {
       icon: Factory,
       title: "Concrete Manufacturers",
-      description: "Create CO₂-reduced and carbon-storing concrete with a drop-in admixture. Meet regulatory demands without retooling.",
+      description: "Swap in our admixture—same batching process, same plant, radically lower carbon footprint. No capex, no downtime.",
     },
     {
       icon: Building2,
       title: "Real Estate & Construction",
-      description: "Turn your projects into carbon sinks. Cut embodied carbon and boost sustainability credentials with zero workflow changes.",
+      description: "Every cubic metre poured becomes a verified carbon sink. Hit net-zero targets on projects already in your pipeline.",
     },
     {
       icon: Landmark,
       title: "Governments & Regulators",
-      description: "Enable net-zero construction targets with proven, scalable carbon removal technology backed by Cambridge science.",
+      description: "Decarbonise public infrastructure with a solution validated at the University of Cambridge and ready for national-scale deployment.",
     },
     {
       icon: BarChart3,
       title: "Carbon Credit Buyers",
-      description: "Offset hard-to-abate emissions with permanent, measurable carbon removal locked into physical structures.",
+      description: "Access durable, physically locked carbon removal credits—quantifiable per building, auditable per tonne.",
     },
   ];
 
