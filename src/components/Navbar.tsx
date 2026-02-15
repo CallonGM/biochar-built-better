@@ -77,17 +77,6 @@ const Navbar = () => {
                 />
               </motion.a>
             ))}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button variant="hero" size="sm">
-                Get Started
-              </Button>
-            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -149,15 +138,6 @@ const Navbar = () => {
                   {link.label}
                 </motion.a>
               ))}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <Button variant="hero" className="w-full">
-                  Get Started
-                </Button>
-              </motion.div>
             </div>
           </motion.div>
         )}
