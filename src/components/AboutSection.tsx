@@ -1,4 +1,3 @@
-import logo from "@/assets/greenmixes-logo.png";
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 
@@ -22,12 +21,12 @@ const AboutSection = () => {
   const team = [
     {
       name: "Callon Peate",
-      role: "PhD Student, Cambridge",
+      role: "PhD Student, University of Cambridge",
       emoji: "🔬",
     },
     {
       name: "Dr. Dushanth Seevaratnam",
-      role: "PhD Chemical Engineering, Cambridge",
+      role: "PhD Chemical Engineering, University of Cambridge",
       emoji: "🎓",
     },
   ];
@@ -48,7 +47,7 @@ const AboutSection = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="max-w-2xl">
             {/* Content */}
             <motion.div variants={itemVariants}>
               <motion.p
@@ -104,22 +103,6 @@ const AboutSection = () => {
               </motion.div>
             </motion.div>
 
-            {/* Visual */}
-            <motion.div className="relative" variants={itemVariants}>
-              <motion.div
-                className="aspect-square rounded-2xl bg-gradient-to-br from-muted to-background border border-border overflow-hidden relative"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img
-                    src={logo}
-                    alt="GreenMixes"
-                    className="w-32 h-32 object-contain"
-                  />
-                </div>
-              </motion.div>
-            </motion.div>
           </div>
         </motion.div>
       </div>

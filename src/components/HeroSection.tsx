@@ -73,7 +73,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              TURNING
+              CARBON-NEGATIVE
             </motion.span>
             <motion.span
               className="block"
@@ -81,7 +81,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.35 }}
             >
-              BUILDINGS INTO
+              CONCRETE,
             </motion.span>
             <motion.span
               className="text-gradient block"
@@ -89,7 +89,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              CARBON SINKS.
+              AT SCALE.
             </motion.span>
           </motion.h1>
 
