@@ -56,10 +56,12 @@ const ContactSection = () => {
             transition={{ duration: 0.6, delay: 0.35 }}
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <Button variant="hero" size="xl" className="group">
-                Partner With Us
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <a href="https://www.linkedin.com/company/greenmixes/" target="_blank" rel="noopener noreferrer">
+                <Button variant="hero" size="xl" className="group">
+                  Partner With Us
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
 

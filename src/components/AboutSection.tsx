@@ -112,49 +112,12 @@ const AboutSection = () => {
                 transition={{ duration: 0.4 }}
               >
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"
-                    animate={{ y: [0, -15, 0], scale: [1, 1.05, 1] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <motion.img
-                      src={logo}
-                      alt="GreenMixes"
-                      className="w-28 h-28 object-contain"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    />
-                  </motion.div>
-                </div>
-
-                {/* Floating particles */}
-                {[...Array(6)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 rounded-full bg-primary/40"
-                    animate={{
-                      y: [0, -30, 0],
-                      x: [0, i % 2 === 0 ? 20 : -20, 0],
-                      opacity: [0.3, 0.7, 0.3],
-                    }}
-                    transition={{
-                      duration: 3 + i * 0.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: i * 0.3,
-                    }}
-                    style={{
-                      left: `${15 + i * 12}%`,
-                      top: `${20 + (i % 4) * 18}%`,
-                    }}
+                  <img
+                    src={logo}
+                    alt="GreenMixes"
+                    className="w-32 h-32 object-contain"
                   />
-                ))}
-
-                <motion.div
-                  className="absolute inset-8 rounded-full border border-primary/20"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                />
+                </div>
               </motion.div>
             </motion.div>
           </div>

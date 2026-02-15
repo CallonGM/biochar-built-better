@@ -56,7 +56,7 @@ const HeroSection = () => {
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-primary text-sm font-medium">
-              Carbon Removal Through Construction
+              Carbon-negative concrete, at scale.
             </span>
           </motion.div>
 
@@ -113,10 +113,12 @@ const HeroSection = () => {
             transition={{ duration: 0.7, delay: 0.7 }}
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <Button variant="hero" size="xl" className="group">
-                Partner With Us
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <a href="https://www.linkedin.com/company/greenmixes/" target="_blank" rel="noopener noreferrer">
+                <Button variant="hero" size="xl" className="group">
+                  Partner With Us
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </a>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
               <Button variant="heroOutline" size="xl">
