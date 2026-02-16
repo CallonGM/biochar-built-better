@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
-import { Leaf, Flame, FlaskConical, Building2, ArrowRight } from "lucide-react";
+import { Leaf, Flame, FlaskConical, Building2 } from "lucide-react";
 
 const TechnologySection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -84,17 +84,6 @@ const TechnologySection = () => {
 
           {/* Process Flow - horizontal like ecoLocked */}
           <motion.div className="relative mb-20" variants={itemVariants}>
-            {/* Connection line */}
-            <div className="hidden md:block absolute top-16 left-[12%] right-[12%] h-px bg-border">
-              <motion.div
-                className="h-full bg-gradient-to-r from-primary to-accent"
-                initial={{ scaleX: 0 }}
-                animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-                transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                style={{ transformOrigin: "left" }}
-              />
-            </div>
-
             <div className="grid md:grid-cols-4 gap-6 md:gap-4">
               {steps.map((step, index) => {
                 const Icon = step.icon;
@@ -108,7 +97,7 @@ const TechnologySection = () => {
                   >
                     {/* Step number + icon */}
                     <motion.div
-                      className={`w-32 h-32 mx-auto rounded-2xl border-2 flex flex-col items-center justify-center mb-6 relative ${
+                      className={`w-32 h-32 mx-auto rounded-2xl border-2 flex flex-col items-center justify-center mb-6 relative z-10 ${
                         step.highlight
                           ? "bg-primary/10 border-primary shadow-glow"
                           : "bg-muted/30 border-border"
@@ -126,16 +115,17 @@ const TechnologySection = () => {
                       <Icon className={`w-8 h-8 ${step.highlight ? "text-primary" : "text-muted-foreground"}`} />
                     </motion.div>
 
-                    {/* Arrow between steps (mobile hidden) */}
+                    {/* Connector between steps */}
                     {index < steps.length - 1 && (
-                      <motion.div
-                        className="hidden md:flex absolute top-16 -right-4 z-10 text-muted-foreground"
-                        initial={{ opacity: 0 }}
-                        animate={isInView ? { opacity: 1 } : {}}
-                        transition={{ delay: 0.8 + index * 0.2 }}
-                      >
-                        <ArrowRight className="w-5 h-5" />
-                      </motion.div>
+                      <div className="hidden md:block absolute top-16 left-[calc(50%+64px)] w-[calc(100%-128px+1rem)] h-px z-0">
+                        <motion.div
+                          className="h-full w-full bg-gradient-to-r from-primary/40 to-primary/20"
+                          initial={{ scaleX: 0 }}
+                          animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+                          transition={{ duration: 0.6, delay: 0.6 + index * 0.2, ease: "easeOut" }}
+                          style={{ transformOrigin: "left" }}
+                        />
+                      </div>
                     )}
 
                     <h3 className="font-display font-semibold text-foreground text-lg mb-2">

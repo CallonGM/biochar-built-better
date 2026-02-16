@@ -80,12 +80,12 @@ const ContactSection = () => {
               Cambridge, UK
             </motion.a>
             <motion.a
-              href="mailto:hello@greenmixes.com"
+              href="mailto:callon@greenmixes.com"
               className="flex items-center gap-2 text-primary hover:text-accent transition-colors"
               whileHover={{ scale: 1.05, x: 5 }}
             >
               <Mail className="w-4 h-4" />
-              hello@greenmixes.com
+              callon@greenmixes.com
             </motion.a>
           </motion.div>
         </motion.div>
