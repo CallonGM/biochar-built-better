@@ -2,17 +2,19 @@ import { Linkedin, Twitter } from "lucide-react";
 import logo from "@/assets/greenmixes-logo.png";
 
 const Footer = () => {
-  const footerLinks = {
-    Company: ["About", "Team", "Careers", "Press"],
-    Technology: ["How It Works", "Research", "Case Studies"],
-    Resources: ["Documentation", "Blog", "FAQ", "Contact"],
-    Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
-  };
+  const footerLinks = [
+    { label: "About", href: "#about" },
+    { label: "How It Works", href: "#technology" },
+    { label: "Impact", href: "#impact" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  const legalLinks = ["Privacy Policy", "Terms of Service", "Cookie Policy"];
 
   return (
     <footer className="bg-card border-t border-border py-16">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-5 gap-12 mb-12">
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
@@ -42,23 +44,21 @@ const Footer = () => {
           </div>
 
           {/* Links */}
-          {Object.entries(footerLinks).slice(0, 3).map(([category, links]) => (
-            <div key={category}>
-              <h4 className="font-display font-semibold text-foreground mb-4">{category}</h4>
-              <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-muted-foreground text-sm hover:text-foreground transition-colors"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <h4 className="font-display font-semibold text-foreground mb-4">Navigation</h4>
+            <ul className="space-y-2">
+              {footerLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground text-sm hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Bottom bar */}
@@ -67,7 +67,7 @@ const Footer = () => {
             © 2025 GreenMixes Ltd. All rights reserved. Cambridge, UK.
           </p>
           <div className="flex gap-6">
-            {footerLinks.Legal.map((link) => (
+            {legalLinks.map((link) => (
               <a
                 key={link}
                 href="#"
