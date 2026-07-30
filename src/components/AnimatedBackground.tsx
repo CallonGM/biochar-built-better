@@ -1,6 +1,29 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useEffect } from "react";
 
 const AnimatedBackground = () => {
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+  const springX = useSpring(mouseX, { stiffness: 60, damping: 25, mass: 0.6 });
+  const springY = useSpring(mouseY, { stiffness: 60, damping: 25, mass: 0.6 });
+
+  const spotlight = useTransform(
+    [springX, springY],
+    ([x, y]: number[]) =>
+      `radial-gradient(600px circle at ${x * 100}% ${y * 100}%, hsl(var(--accent) / 0.14), transparent 70%)`
+  );
+  const parallaxX = useTransform(springX, [0, 1], ["2%", "-2%"]);
+  const parallaxY = useTransform(springY, [0, 1], ["2%", "-2%"]);
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      mouseX.set(e.clientX / window.innerWidth);
+      mouseY.set(e.clientY / window.innerHeight);
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
+  }, [mouseX, mouseY]);
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       {/* Base gradient */}
@@ -59,6 +82,8 @@ const AnimatedBackground = () => {
             linear-gradient(to bottom, hsl(var(--primary) / 0.1) 1px, transparent 1px)
           `,
           backgroundSize: "80px 80px",
+          x: parallaxX,
+          y: parallaxY,
         }}
         animate={{
           backgroundPosition: ["0px 0px", "80px 80px"],
@@ -151,6 +176,19 @@ const AnimatedBackground = () => {
           delay: 4,
         }}
       />
+
+      {/* Cursor-follow spotlight */}
+      <motion.div className="absolute inset-0" style={{ backgroundImage: spotlight }} />
+
+      {/* Slow scanline sweep */}
+      <motion.div
+        className="absolute inset-x-0 h-[40vh] bg-gradient-to-b from-transparent via-primary/[0.04] to-transparent"
+        animate={{ y: ["-40vh", "100vh"] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Vignette for depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,hsl(var(--background))_100%)]" />
 
       {/* Noise texture overlay */}
       <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay">
