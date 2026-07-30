@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import ContactForm from "./ContactForm";
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -49,21 +49,7 @@ const ContactSection = () => {
             Whether you're a concrete manufacturer, developer, or carbon credit buyer—let's discuss how GreenMixes can transform your next project.
           </motion.p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.35 }}
-          >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <a href="https://www.linkedin.com/company/greenmixes/" target="_blank" rel="noopener noreferrer">
-                <Button variant="hero" size="xl" className="group">
-                  Partner With Us
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </a>
-            </motion.div>
-          </motion.div>
+          <ContactForm />
 
           <motion.div
             className="mt-14 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-center gap-8"
